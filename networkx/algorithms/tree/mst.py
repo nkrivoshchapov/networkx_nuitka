@@ -366,8 +366,8 @@ ALGORITHMS = {
 }
 
 
+# @nx._dispatch(edge_attrs="weight", preserve_edge_attrs="data")
 @not_implemented_for("directed")
-@nx._dispatch(edge_attrs="weight", preserve_edge_attrs="data")
 def minimum_spanning_edges(
     G, weight, data, algorithm="kruskal", keys=True, ignore_nan=False
 ):
