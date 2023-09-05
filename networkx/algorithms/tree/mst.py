@@ -369,7 +369,7 @@ ALGORITHMS = {
 @not_implemented_for("directed")
 @nx._dispatch(edge_attrs="weight", preserve_edge_attrs="data")
 def minimum_spanning_edges(
-    G, weight, algorithm="kruskal", keys=True, data=True, ignore_nan=False
+    G, weight, data, algorithm="kruskal", keys=True, ignore_nan=False
 ):
     """Generate edges in a minimum spanning forest of an undirected
     weighted graph.

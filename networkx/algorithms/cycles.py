@@ -1086,7 +1086,7 @@ def _min_cycle_basis(G, weight):
     # We  extract the edges not in a spanning tree. We do not really need a
     # *minimum* spanning tree. That is why we call the next function with
     # weight=None. Depending on implementation, it may be faster as well
-    tree_edges = list(nx.minimum_spanning_edges(G, weight, data=False))
+    tree_edges = list(nx.minimum_spanning_edges(G, weight, False))
     chords = G.edges - tree_edges - {(v, u) for u, v in tree_edges}
 
     # We maintain a set of vectors orthogonal to sofar found cycles
