@@ -138,12 +138,13 @@ def boruvka_mst_edges(
                 forest.union(u, v)
 
 
-@nx._dispatch(
-    edge_attrs={"weight": None, "partition": None}, preserve_edge_attrs="data"
-)
-def kruskal_mst_edges(
-    G, minimum, weight="weight", keys=True, data=True, ignore_nan=False, partition=None
-):
+# @nx._dispatch(
+#     edge_attrs={"weight": None, "partition": None}, preserve_edge_attrs="data"
+# )
+def kruskal_mst_edges(G, minimum, weight, data):
+    keys = True
+    ignore_nan = False
+    partition = None
     """
     Iterate over edge of a Kruskal's algorithm min/max spanning tree.
 
@@ -367,10 +368,11 @@ ALGORITHMS = {
 
 
 # @nx._dispatch(edge_attrs="weight", preserve_edge_attrs="data")
-@not_implemented_for("directed")
-def minimum_spanning_edges(
-    G, weight, data, algorithm="kruskal", keys=True, ignore_nan=False
-):
+# @not_implemented_for("directed")
+def minimum_spanning_edges(G, weight, data):
+    algorithm = "kruskal"
+    keys = True
+    ignore_nan = False
     """Generate edges in a minimum spanning forest of an undirected
     weighted graph.
 
@@ -456,9 +458,7 @@ def minimum_spanning_edges(
         msg = f"{algorithm} is not a valid choice for an algorithm."
         raise ValueError(msg) from err
 
-    return algo(
-        G, minimum=True, weight=weight, keys=keys, data=data, ignore_nan=ignore_nan
-    )
+    return algo(G, True, weight, data)
 
 
 @not_implemented_for("directed")
