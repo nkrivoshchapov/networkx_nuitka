@@ -9,7 +9,8 @@ __all__ = ["chain_decomposition"]
 @not_implemented_for("directed")
 @not_implemented_for("multigraph")
 @nx._dispatch
-def chain_decomposition(G, root=None):
+def chain_decomposition(G):
+    root = None
     """Returns the chain decomposition of a graph.
 
     The *chain decomposition* of a graph with respect a depth-first

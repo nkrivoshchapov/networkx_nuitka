@@ -9,7 +9,7 @@ __all__ = ["bridges", "has_bridges", "local_bridges"]
 
 @not_implemented_for("directed")
 @nx._dispatch
-def bridges(G, root=None):
+def bridges(G):
     """Generate all bridges in a graph.
 
     A *bridge* in a graph is an edge whose removal causes the number of
@@ -66,9 +66,11 @@ def bridges(G, root=None):
     ----------
     .. [1] https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29#Bridge-Finding_with_Chain_Decompositions
     """
+    root = None
+
     multigraph = G.is_multigraph()
     H = nx.Graph(G) if multigraph else G
-    chains = nx.chain_decomposition(H, root=root)
+    chains = nx.chain_decomposition(H)
     chain_edges = set(chain.from_iterable(chains))
     H_copy = H.copy()
     if root is not None:
