@@ -1036,7 +1036,7 @@ def find_cycle(G, source=None, orientation=None):
 @not_implemented_for("directed")
 @not_implemented_for("multigraph")
 @nx._dispatch(edge_attrs="weight")
-def minimum_cycle_basis(G, weight=None):
+def minimum_cycle_basis(G):
     """Returns a minimum weight cycle basis for G
 
     Minimum weight means a cycle basis for which the total weight
@@ -1073,6 +1073,7 @@ def minimum_cycle_basis(G, weight=None):
     --------
     simple_cycles, cycle_basis
     """
+    weight = None
     # We first split the graph in connected subgraphs
     return sum(
         (_min_cycle_basis(G.subgraph(c), weight) for c in nx.connected_components(G)),
